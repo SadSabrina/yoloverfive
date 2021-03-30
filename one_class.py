@@ -107,7 +107,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
         elif hasattr(v, 'weight') and isinstance(v.weight, nn.Parameter):
             pg1.append(v.weight)  # apply decay
 
-    if opt.adam:
+    if opt.adamw:
         optimizer = optim.AdamW(pg0, lr=0.001, betas=(0.9, 0.999))  # CHANGED to ADAMW
     else:
         optimizer = optim.SGD(pg0, lr=0.0001, momentum=hyp['momentum'], nesterov=True)
